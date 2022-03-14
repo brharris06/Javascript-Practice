@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event Listener</title>
+    <style>
+        button {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Sign Up</h1>
+
+<p>Passwords must be at least 5 characters long.</p>
+<label for="password">Password</label>
+<input type="password" id="password" placeholder="Enter password">
+<br>
+<button>Register</button>
+
+<script>
+    "use strict";
+
+    // add keyboard event listener to password input
+    // console log the length of the current text in the password field
+
+    var passwordInput = document.getElementById('password');
+    var registerBtn = document.getElementsByTagName('button')[0];
+
+    function registerUser() {
+        console.log('Submitting form...');
+        registerBtn.removeEventListener('click', registerUser);
+    }
+
+    registerBtn.addEventListener('click', registerUser);
+
+    // three types of keyboard events: keypress, keydown, keyup
+
+    passwordInput.addEventListener("keyup", function() {
+        if (passwordInput.value.length > 4) {
+            registerBtn.style.display = "inline-block";
+        } else {
+            registerBtn.style.display = "none";
+        }
+    });
+
+</script>
+</body>
+</html>
